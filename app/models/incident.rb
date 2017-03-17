@@ -3,6 +3,7 @@ class Incident < ApplicationRecord
 
   def to_json
     {
+      external_uuid: external_uuid,
       description: description,
       severity: severity,
       lat: lat,
