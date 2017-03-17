@@ -16,7 +16,7 @@ namespace :populator do
       puts "."
       result.each do |item|
         incident = Incident.find_by_external_uuid item['uuid']
-
+        data = item['data']
         attrs = {
           description: data['incidentDetails']['Description'],
           lng: item['geom']['coordinates'][0],
@@ -31,7 +31,7 @@ namespace :populator do
           day: DateTime.parse(item['occurred_from']).strftime('%Y%m%d'),
         }
 
-        data = item['data']
+
         if incident
           incident.update(attrs)
         else
