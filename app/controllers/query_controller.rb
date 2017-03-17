@@ -1,7 +1,7 @@
 class QueryController < ApplicationController
   def index
     radius = params[:radius] || 1
-    incidents = Incident.within(radius, :origin => [params[:lng], params[:lat]])
+    incidents = Incident.within(radius, :origin => [params[:lat], params[:lng]])
 
     if params[:hour]
       incidents = incidents.where(hour_of_day: params[:hour].to_s)
@@ -12,7 +12,7 @@ class QueryController < ApplicationController
 
   def stats
     radius = params[:radius] || 1
-    incidents = Incident.within(radius, :origin => [params[:lng], params[:lat]])
+    incidents = Incident.within(radius, :origin => [params[:lat], params[:lng]])
 
     if params[:hour]
       incidents =incidents.where(hour_of_day: params[:hour].to_s)
