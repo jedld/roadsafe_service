@@ -12,14 +12,12 @@ namespace :populator do
     # p driver_api.setup_record_types
     # p driver_api.query_schema
     # p driver_api.type_lookup
-    driver_api.get_incident(start_date:  "2015-01-01T00:00:00.000Z",  end_date: '2015-06-30T23:59:59.000Z') do |result|
+    driver_api.get_incident(start_date:  "2015-01-01T00:00:00.000Z",  end_date: '2015-07-30T23:59:59.000Z') do |result|
       puts "."
       result.each do |item|
         incident = Incident.find_by_external_uuid item['uuid']
-        next if incident
 
-        data = item['data']
-        Incident.create!(
+        attrs = {
           description: data['incidentDetails']['Description'],
           lng: item['geom']['coordinates'][0],
           lat: item['geom']['coordinates'][1],
@@ -29,9 +27,16 @@ namespace :populator do
           severity: data['incidentDetails']['Severity'],
           occurred_from: item['occurred_from'],
           occurred_to: item['occurred_to'],
-          hour_of_day: DateTime.parse(item['occurred_from']).hour,
+          hour_of_day: DateTime.parse(item['occurred_from']).utc.hour,
           day: DateTime.parse(item['occurred_from']).strftime('%Y%m%d'),
-        )
+        }
+
+        data = item['data']
+        if incident
+          incident.update(attrs)
+        else
+          Incident.create!(attrs)
+        end
       end
     end
 
