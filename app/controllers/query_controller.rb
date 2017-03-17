@@ -2,6 +2,11 @@ class QueryController < ApplicationController
   def index
     radius = params[:radius] || 1
     incidents = Incident.within(radius, :origin => [params[:lng], params[:lat]])
+
+    if params[:hour]
+      incidents = incidents.where(hour_of_day: params[:hour].to_s)
+    end
+
     render json: { count: incidents.size, result: incidents.collect(&:to_json) }
   end
 
