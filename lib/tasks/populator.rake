@@ -17,14 +17,20 @@ namespace :populator do
       result.each do |item|
         incident = Incident.find_by_external_uuid item['uuid']
         data = item['data']
+        description = data['incidentDetails']['Description']
+
+        severity = data['incidentDetails']['Severity']
+
+        severity = 'Theft' if description.downcase.match(/theft/) || description.downcase.match(/stolen/)
+
         attrs = {
-          description: data['incidentDetails']['Description'],
+          description: description,
           lng: item['geom']['coordinates'][0],
           lat: item['geom']['coordinates'][1],
           external_uuid: item['uuid'],
           weather: item['weather'],
           light: item['light'],
-          severity: data['incidentDetails']['Severity'],
+          severity:severity,
           occurred_from: item['occurred_from'],
           occurred_to: item['occurred_to'],
           hour_of_day: DateTime.parse(item['occurred_from']).utc.hour,

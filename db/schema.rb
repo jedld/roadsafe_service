@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170316182551) do
+ActiveRecord::Schema.define(version: 20170317143654) do
 
   create_table "incidents", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.text     "description",   limit: 65535
@@ -27,6 +27,10 @@ ActiveRecord::Schema.define(version: 20170316182551) do
     t.decimal  "lng",                         precision: 15, scale: 10
     t.datetime "created_at",                                            null: false
     t.datetime "updated_at",                                            null: false
+    t.index ["day"], name: "index_incidents_on_day", using: :btree
+    t.index ["external_uuid"], name: "index_incidents_on_external_uuid", unique: true, using: :btree
+    t.index ["hour_of_day"], name: "index_incidents_on_hour_of_day", using: :btree
+    t.index ["severity"], name: "index_incidents_on_severity", using: :btree
   end
 
 end
