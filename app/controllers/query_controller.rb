@@ -21,12 +21,14 @@ class QueryController < ApplicationController
     fatal_count = incidents.where(severity: 'Fatal').count || 0
     injury_count = incidents.where(severity: 'Injury').count || 0
     property_count = incidents.where(severity: 'Property').count || 0
+    theft_count = incidents.where(severity: 'Theft').count || 0
 
     days = incidents.distinct.pluck(:day).count.to_f
     render json: {
         fatal_risk_factor: days > 0 ? fatal_count.to_f / days : 0,
         injury_risk_factor: days > 0 ? injury_count.to_f / days : 0,
         property_risk_factor: days > 0 ? property_count.to_f / days : 0,
+        theft_risk_factor: days > 0 ? theft_count.to_f / days : 0,
         total: incidents.size,
         fatal: fatal_count,
         injury: injury_count,
