@@ -12,7 +12,7 @@ namespace :populator do
     # p driver_api.setup_record_types
     # p driver_api.query_schema
     # p driver_api.type_lookup
-    driver_api.get_incident(start_date:  "2015-01-01T00:00:00.000Z",  end_date: '2015-07-30T23:59:59.000Z') do |result|
+    driver_api.get_incident(start_date:  "2015-01-01T00:00:00.000Z",  end_date: '2015-08-30T23:59:59.000Z') do |result|
       puts "."
       result.each do |item|
         incident = Incident.find_by_external_uuid item['uuid']
