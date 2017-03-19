@@ -1,4 +1,5 @@
-# README
+README
+======
 
 This is a project I started for the Road Safety Idea Hack 2017 I joined in March 18, 2017
 at crowne plaza, ortigas, manila.
@@ -6,19 +7,28 @@ at crowne plaza, ortigas, manila.
 This a free and opensource Rails 5.0 based web service that performs queries on DRIVER platform imported data and computes the risk factor for a GPS point based on DRIVER crash data.
 
 The DRIVER platform is a service provided by the Philippine Department of Transportation
-with the partnership of World Bank and other private companies for reporting and
+with the partnership of World Bank and Grab as well as other companies for reporting and
 exposing anonymized crash data. For more information on the DRIVER platfrom see here:
 
  https://github.com/WorldBank-Transport/DRIVER
  https://github.com/WorldBank-Transport/DRIVER/blob/master/doc/api-use-case-health-organization.md
 
+ LICENSE
+ =======
 
-# REQUIREMENTS
+ This app is provided free of charge and is opensource. If there are bugs you can fix it
+ yourself or submit an issue/pull request and I can investigate if I have time.
+
+ Please take a look at LICENSE.md for details.  
+
+REQUIREMENTS
+============
 
 * ruby 2.3.1
 * MySQL
 
-# INSTALLATION NOTES
+INSTALLATION NOTES
+==================
 
 1. Check out this project and setup rails
 
