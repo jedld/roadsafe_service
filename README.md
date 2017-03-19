@@ -1,24 +1,33 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This is a Rails 5.0 based web service that performs queries on DRIVER platform imported data and computes the risk factor for a GPS point based on DRIVER crash data.
 
-Things you may want to cover:
+# REQUIREMENTS
 
-* Ruby version
+* ruby 2.3.1
+* MySQL
 
-* System dependencies
+# INSTALLATION NOTES
 
-* Configuration
+1. Check out this project and setup rails
 
-* Database creation
+```
+bundle
+rake db:setup
+rake db:migrate
+```
 
-* Database initialization
+2. Sign up to https://roadsafety.gov.ph and get a token. Update the .env file and
+  edit in the token you obtained
 
-* How to run the test suite
+3. Seed your data with the DRIVER data:
 
-* Services (job queues, cache servers, search engines, etc.)
+```
+rake populate:start
+```
 
-* Deployment instructions
+4. Start the server
 
-* ...
+```
+rails s
+```

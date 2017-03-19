@@ -4,8 +4,7 @@ namespace :populator do
   desc "Downloads incidents online"
   task :start => :environment do
     # OpenSSL::SSL::VERIFY_PEER = OpenSSL::SSL::VERIFY_NONE
-    driver_api = DriverApi.new(endpoint: 'https://roadsafety.io', token: '199cbed6157b31b052298d970888a6feb783053d')
-    # driver_api = DriverApi.new(endpoint: 'https://roadsafety.gov.ph', token: '7a78477ca3da560bd363cf6e213e9d4100a35509')
+    driver_api = DriverApi.new(endpoint: 'https://roadsafety.gov.ph', token: '7a78477ca3da560bd363cf6e213e9d4100a35509')
 
     driver_api.setup_record_types
 
