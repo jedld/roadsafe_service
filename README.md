@@ -6,7 +6,7 @@ at crowne plaza, ortigas, manila.
 
 This a free and opensource Rails 5.0 based web service that performs queries on DRIVER platform imported data and computes the risk factor for a GPS point based on DRIVER crash data.
 
-The DRIVER platform is a service provided by the Philippine Department of Transportation
+The DRIVER platform is a service provided by the DOTr
 with the partnership of World Bank and Grab as well as other companies for reporting and
 exposing anonymized crash data. For more information on the DRIVER platfrom see here:
 
